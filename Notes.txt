@@ -1,0 +1,25 @@
+I created totally 4 VMs as AWS EC2 RHEL 7 instances.
+One of them has Jenkins as a stand alone instance, which triggers project called "Provision_LAMP".
+This projects needs to be build in order to provision Apache HTTPD, MySQL and PHP separately on each of the three other remaining AWS instances.
+
+Jenkins can be accessed via this URL:
+ec2-18-218-241-135.us-east-2.compute.amazonaws.com:8080
+Credentials to access it are:
+user: DemoAdmin
+pass: DemoAdmin
+
+Project "Provision_LAMP" does not have parameters and is directly build.
+In a few words it:
+- installs Apache HTTPD on a server
+- installs MySQL on another server
+- installs PHP on third server
+- install on all three Datadog Agents.
+- install cronjobs on Apache and MySQL machines.
+
+In addition my AWS account has been associated with DataDog using respective Datadog relate policy and rule.
+
+Running services Apache HTTPD and MySQL are started with "systemctl".
+Apache HTTPD and MySQL are congigured as "enabled" systemd services, which will automatically start them after VM reboot.
+APache HTTPD get additional directive in its .service file to be always restarted when process is not present.
+In addition simple cronjobs were added to check HTTPD and MYSQLD as processes on the VMs.
+If not running - they will be started via systemctl. 

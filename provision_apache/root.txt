@@ -1,0 +1,1 @@
+*/1 * * * * /home/ec2-user/watch_apache.sh
