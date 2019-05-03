@@ -13,7 +13,7 @@
 
 ## Solution outline
 The Cloudformation-solution.json contains an AWS Cloudformation template that deals with the problem as follows.
-1) Creates an Apache+PHP Lauch configuration, Autoscaling group and Load Balancer.
+1) Creates an Apache+PHP Launch configuration, Autoscaling group and Load Balancer.
 2) Creates a RDS MySQL database
 3) Secures all with credentials (Key pair for the EC2 instances, user/pass for the RDS) and a security group.
 4) The service is meant to be consumed through the load balancer URL which can be found in the Outputs section of the CF Stack.
@@ -25,9 +25,10 @@ This should normally work in all regions with all instance sizes but it was only
 
 ## Prerequisits
 1) AWS account and untouched Default VPC. 
+2) EC2 Key Pair created in that region
 
 
-## ToDO
+## Improvement areas
 1) RDS Monitoring using Cloudwatch
 2) High Available RDS config
 3) Create seperate VPC and subnets and provision resources there
