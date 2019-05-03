@@ -286,42 +286,12 @@
 								"mode"  : "000600",
 								"owner" : "apache",
 								"group" : "apache"
-							},
-				
-							"/etc/cfn/cfn-hup.conf" : {
-								"content" : { "Fn::Join" : ["", [
-								"[main]\n",
-								"stack=", { "Ref" : "AWS::StackId" }, "\n",
-								"region=", { "Ref" : "AWS::Region" }, "\n"
-								]]},
-								"mode"    : "000400",
-								"owner"   : "root",
-								"group"   : "root"
-							},
-				
-							"/etc/cfn/hooks.d/cfn-auto-reloader.conf" : {
-								"content": { "Fn::Join" : ["", [
-								"[cfn-auto-reloader-hook]\n",
-								"triggers=post.update\n",
-								"path=Resources.WebServerLaunchConfig.Metadata.AWS::CloudFormation::Init\n",
-								"action=/opt/aws/bin/cfn-init -v ",
-								"         --stack ", { "Ref" : "AWS::StackName" },
-								"         --resource WebServerLaunchConfig ",
-								"         --configsets InstallAndRun ",
-								"         --region ", { "Ref" : "AWS::Region" }, "\n",
-								"runas=root\n"
-								]]},
-								"mode"    : "000400",
-								"owner"   : "root",
-								"group"   : "root"
 							}
 						},
 			
 						"services" : {
 						"sysvinit" : {  
-							"httpd"   : { "enabled" : "true", "ensureRunning" : "true" },
-							"cfn-hup" : { "enabled" : "true", "ensureRunning" : "true",
-										"files" : ["/etc/cfn/cfn-hup.conf", "/etc/cfn/hooks.d/cfn-auto-reloader.conf"]}
+							"httpd"   : { "enabled" : "true", "ensureRunning" : "true" }
 						}
 						}
 					}
