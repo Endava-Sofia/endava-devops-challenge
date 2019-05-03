@@ -11,7 +11,7 @@
 8) Present a working solution, e.g. not a powerpoint presentation, but a working demo
 
 
-##Solution outline
+## Solution outline
 The Cloudformation-solution.json contains an AWS Cloudformation template that deals with the problem as follows.
 1) Creates an Apache+PHP Lauch configuration, Autoscaling group and Load Balancer.
 2) Creates a RDS MySQL database
@@ -20,14 +20,14 @@ The Cloudformation-solution.json contains an AWS Cloudformation template that de
 5) The load balancer health checks the app layer every 30 seconds by accessing the main php page.
 6) If we have a couple of bad requests (status code not equals 200) then the instance is automatically terminated and a new one is launched in its place from the template.
 
-##Supported scenarios
+## Supported scenarios
 This should normally work in all regions with all instance sizes but it was only tested in Oregon and Canada with the default instance size.
 
-##Prerequisits
+## Prerequisits
 1) AWS account and untouched Default VPC. 
 
 
-##ToDO
+## ToDO
 1) RDS Monitoring using Cloudwatch
 2) High Available RDS config
 3) Create seperate VPC and subnets and provision resources there
